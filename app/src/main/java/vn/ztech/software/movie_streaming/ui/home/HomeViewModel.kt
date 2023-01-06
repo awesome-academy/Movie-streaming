@@ -24,7 +24,6 @@ class HomeViewModel(private val movieRepository: IMovieRepository) : BaseViewMod
     val loadingRecentMovies: LiveData<Boolean> = _loadingRecentMovies
     val recentShows: LiveData<List<Show>> = _recentShows
     val loadingRecentShows: LiveData<Boolean> = _loadingRecentShows
-    val error: LiveData<Exception> = _error
 
     fun getTrendingMovies() {
         launchTaskAsync<BaseAPIResponse>(

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dp_8"
+    android:id="@+id/constrain_container"
     tools:background="@color/black">
 
     <TextView
@@ -15,27 +16,28 @@
         style="@style/StyleTextTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Trending movie" />
+        android:text="@string/episodes" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_list_movies"
+        android:id="@+id/recycler_list_episodes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/dp_160"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_title"
-        tools:listitem="@layout/layout_movie_item" />
+        tools:listitem="@layout/layout_episode_item" />
 
     <include
         android:id="@+id/layout_loading"
         layout="@layout/layout_loading"
         android:layout_width="@dimen/dp_0"
         android:layout_height="@dimen/dp_0"
-        app:layout_constraintBottom_toBottomOf="@id/recycler_list_movies"
-        app:layout_constraintEnd_toEndOf="@id/recycler_list_movies"
-        app:layout_constraintStart_toStartOf="@id/recycler_list_movies"
-        app:layout_constraintTop_toTopOf="@id/recycler_list_movies" />
+        app:layout_constraintBottom_toBottomOf="@id/recycler_list_episodes"
+        app:layout_constraintEnd_toEndOf="@id/recycler_list_episodes"
+        app:layout_constraintStart_toStartOf="@id/recycler_list_episodes"
+        app:layout_constraintTop_toTopOf="@id/recycler_list_episodes" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
