@@ -1,6 +1,10 @@
 package vn.ztech.software.movie_streaming.data.repository
 
-import vn.ztech.software.movie_streaming.data.model.*
+import vn.ztech.software.movie_streaming.data.model.BaseAPIResponse
+import vn.ztech.software.movie_streaming.data.model.Media.Movie
+import vn.ztech.software.movie_streaming.data.model.Media.Show
+import vn.ztech.software.movie_streaming.data.model.MediaDetails
+import vn.ztech.software.movie_streaming.data.model.StreamingResource
 import vn.ztech.software.movie_streaming.utils.DataResult
 
 interface IMovieRepository {
@@ -13,8 +17,11 @@ interface IMovieRepository {
 
     suspend fun search(keyword: String): DataResult<BaseAPIResponse>
 
-    suspend fun getMovieInfo(id: String): DataResult<MovieDetails>
+    suspend fun getMovieInfo(id: String): DataResult<MediaDetails>
 
-    suspend fun getStreamingResource(episodeId: String, mediaId: String): DataResult<StreamingResource>
+    suspend fun getStreamingResource(
+        episodeId: String,
+        mediaId: String
+    ): DataResult<StreamingResource>
 
 }

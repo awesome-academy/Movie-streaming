@@ -20,7 +20,7 @@ open class BaseViewModel : ViewModel() {
     ) = viewModelScope.launch {
         updateLoading(loading)
 
-        when(val task = onRequest(this)){
+        when (val task = onRequest(this)) {
             is DataResult.Success -> {
                 onSuccess(task.data)
             }
@@ -33,11 +33,12 @@ open class BaseViewModel : ViewModel() {
         updateLoading(LoadingState.NOT_LOADING)
     }
 
-    private fun updateLoading(state: LoadingState){
+    private fun updateLoading(state: LoadingState) {
         _loading.value = state.value
     }
-    companion object{
-        enum class LoadingState(val value: Boolean = false){
+
+    companion object {
+        enum class LoadingState(val value: Boolean = false) {
             LOADING(true), NOT_LOADING(false)
         }
     }

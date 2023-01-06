@@ -17,7 +17,7 @@ fun Context.showAlertDialog(
     onClickCancelListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { _, _ -> },
     onClickOkListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { _, _ -> }
 ) {
-    AlertDialog.Builder(this)
+    AlertDialog.Builder(this, R.style.DialogTheme)
         .setTitle(this.resources.getString(titleStringId))
         .setMessage(this.resources.getString(messageStringId))
         .setNegativeButton(R.string.dialog_button_cancel, onClickCancelListener)
@@ -31,7 +31,7 @@ fun Context.showAlertDialog(
     onClickCancelListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { _, _ -> },
     onClickOkListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener { _, _ -> }
 ) {
-    AlertDialog.Builder(this)
+    AlertDialog.Builder(this, R.style.DialogTheme)
         .setTitle(titleStringId)
         .setMessage(messageStringId)
         .setNegativeButton(R.string.dialog_button_cancel, onClickCancelListener)

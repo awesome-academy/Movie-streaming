@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
 typealias ActivityInflate<T> = (LayoutInflater) -> T
-abstract class BaseActivity<VB: ViewBinding>(private val inflate: ActivityInflate<VB>):
+
+abstract class BaseActivity<VB : ViewBinding>(private val inflate: ActivityInflate<VB>) :
     AppCompatActivity() {
 
     var binding: VB? = null

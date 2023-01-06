@@ -10,18 +10,21 @@ interface IMovieApi {
     @GET("trending")
     suspend fun getTrendingMovies(): BaseAPIResponse
 
-    @GET("/recent-movies")
-    suspend fun getRecentMovies(): List<Movie>
+    @GET("recent-movies")
+    suspend fun getRecentMovies(): List<Media.Movie>
 
-    @GET("/recent-shows")
-    suspend fun getRecentShows(): List<Show>
+    @GET("recent-shows")
+    suspend fun getRecentShows(): List<Media.Show>
 
-    @GET("/{keyword}")
+    @GET("{keyword}")
     suspend fun search(@Path("keyword") keyword: String): BaseAPIResponse
 
-    @GET("/info")
-    suspend fun getMovieInfo(@Query("id") id: String): MovieDetails
+    @GET("info")
+    suspend fun getMovieInfo(@Query("id") id: String): MediaDetails
 
-    @GET("/watch")
-    suspend fun getStreamingUrl(@Query("episodeId") episodeId: String, @Query("mediaId") mediaId: String ): StreamingResource
+    @GET("watch")
+    suspend fun getStreamingUrl(
+        @Query("episodeId") episodeId: String,
+        @Query("mediaId") mediaId: String
+    ): StreamingResource
 }

@@ -1,11 +1,15 @@
 package vn.ztech.software.movie_streaming.data.source
 
-import vn.ztech.software.movie_streaming.data.model.*
+import vn.ztech.software.movie_streaming.data.model.BaseAPIResponse
+import vn.ztech.software.movie_streaming.data.model.Media.Movie
+import vn.ztech.software.movie_streaming.data.model.Media.Show
+import vn.ztech.software.movie_streaming.data.model.MediaDetails
+import vn.ztech.software.movie_streaming.data.model.StreamingResource
 
 interface IMovieDataSource {
 
     interface Local {
-        // todo implement later
+        // TODO  implement later
     }
 
     interface Remote {
@@ -18,7 +22,7 @@ interface IMovieDataSource {
 
         suspend fun search(keyword: String): BaseAPIResponse
 
-        suspend fun getMovieInfo(id: String): MovieDetails
+        suspend fun getMovieInfo(id: String): MediaDetails
 
         suspend fun getStreamingResource(episodeId: String, mediaId: String): StreamingResource
 
