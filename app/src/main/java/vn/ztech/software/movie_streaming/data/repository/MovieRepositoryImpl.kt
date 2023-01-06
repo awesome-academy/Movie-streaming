@@ -1,12 +1,16 @@
 package vn.ztech.software.movie_streaming.data.repository
 
-import kotlinx.coroutines.withContext
 import vn.ztech.software.movie_streaming.base.BaseRepository
-import vn.ztech.software.movie_streaming.data.model.*
+import vn.ztech.software.movie_streaming.data.model.BaseAPIResponse
+import vn.ztech.software.movie_streaming.data.model.Media.Movie
+import vn.ztech.software.movie_streaming.data.model.Media.Show
+import vn.ztech.software.movie_streaming.data.model.MediaDetails
+import vn.ztech.software.movie_streaming.data.model.StreamingResource
 import vn.ztech.software.movie_streaming.data.source.IMovieDataSource
 import vn.ztech.software.movie_streaming.utils.DataResult
 
-class MovieRepositoryImpl(private val remote: IMovieDataSource.Remote): BaseRepository(), IMovieRepository {
+class MovieRepositoryImpl(private val remote: IMovieDataSource.Remote) : BaseRepository(),
+    IMovieRepository {
 
     override suspend fun getTrendingMovies(): DataResult<BaseAPIResponse> = getResult {
         remote.getTrendingMovies()
@@ -24,7 +28,7 @@ class MovieRepositoryImpl(private val remote: IMovieDataSource.Remote): BaseRepo
         remote.search(keyword)
     }
 
-    override suspend fun getMovieInfo(id: String): DataResult<MovieDetails> = getResult {
+    override suspend fun getMovieInfo(id: String): DataResult<MediaDetails> = getResult {
         remote.getMovieInfo(id)
     }
 
@@ -34,5 +38,4 @@ class MovieRepositoryImpl(private val remote: IMovieDataSource.Remote): BaseRepo
     ): DataResult<StreamingResource> = getResult {
         remote.getStreamingResource(episodeId, mediaId)
     }
-
 }

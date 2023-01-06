@@ -13,4 +13,6 @@ object Constant {
         Search,
         Profile,
     }
+
+    const val SPLASH_DELAY_TIME = 2000L
 }

@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import vn.ztech.software.movie_streaming.R
 
 fun ImageView.loadImage(
-    url: String,
+    url: String?,
     @DrawableRes drawablePlaceHolder: Int = R.drawable.img_movie
 ) {
     Glide

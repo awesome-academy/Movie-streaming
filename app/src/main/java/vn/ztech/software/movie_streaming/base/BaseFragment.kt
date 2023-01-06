@@ -9,16 +9,17 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.bumptech.glide.manager.SupportRequestManagerFragment
 import vn.ztech.software.movie_streaming.ui.MainActivity
 import vn.ztech.software.movie_streaming.ui.home.HomeFragment
 import vn.ztech.software.movie_streaming.ui.profile.ProfileFragment
 import vn.ztech.software.movie_streaming.ui.search.SearchFragment
 import vn.ztech.software.movie_streaming.utils.extensions.addFragment
-import com.bumptech.glide.manager.SupportRequestManagerFragment
 
 typealias FragmentInflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
-abstract class BaseFragment<VB: ViewBinding>(private val inflate: FragmentInflate<VB>): Fragment() {
+abstract class BaseFragment<VB : ViewBinding>(private val inflate: FragmentInflate<VB>) :
+    Fragment() {
 
     private var _binding: VB? = null
     val binding get() = _binding
@@ -38,7 +39,7 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: FragmentInflat
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = inflate.invoke(inflater,container, false)
+        _binding = inflate.invoke(inflater, container, false)
         return binding?.root
     }
 
@@ -85,6 +86,7 @@ abstract class BaseFragment<VB: ViewBinding>(private val inflate: FragmentInflat
         }
 
     }
+
 
     companion object {
         val fragmentsShouldNotClear = listOf<Class<*>>(

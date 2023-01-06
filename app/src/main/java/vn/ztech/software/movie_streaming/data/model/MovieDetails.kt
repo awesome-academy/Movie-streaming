@@ -1,6 +1,6 @@
 package vn.ztech.software.movie_streaming.data.model
 
-data class MovieDetails(
+data class MediaDetails(
     val casts: List<String>?,
     val country: String?,
     val cover: String?,
@@ -12,7 +12,7 @@ data class MovieDetails(
     val image: String?,
     val production: String?,
     val rating: Double?,
-    val recommendations: List<Movie>?,
+    val recommendations: List<Media>?,
     val releaseDate: String?,
     val tags: List<String>?,
     val title: String?,
