@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include
+        android:id="@+id/layout_iv_cover_blur"
+        layout="@layout/image_view_blur"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="250dp"
+        tools:src="@drawable/img_movie"
+        android:layout_height="400dp"
+        android:layout_marginTop="@dimen/dp_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:textSize="@dimen/sp_26"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Once upon a time in Hollywood"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_cover" />
+
+    <TextView
+        android:layout_marginTop="@dimen/dp_24"
+        android:id="@+id/bt_add_my_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/bt_play"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:text="@string/add_to_my_list"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="?attr/colorPrimary"
+        app:drawableStartCompat="@drawable/ic_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/bt_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded"
+        android:backgroundTint="?attr/colorPrimary"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:text="@string/play"
+        app:layout_constraintEnd_toStartOf="@id/bt_info"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:textColor="?attr/colorOnPrimary"
+        app:drawableStartCompat="@drawable/ic_play"
+        app:layout_constraintStart_toEndOf="@id/bt_add_my_list"
+        app:layout_constraintTop_toTopOf="@id/bt_add_my_list" />
+
+    <TextView
+        android:id="@+id/bt_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:text="@string/info"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="?attr/colorPrimary"
+        app:drawableStartCompat="@drawable/ic_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintStart_toEndOf="@id/bt_play"
+        app:layout_constraintTop_toTopOf="@id/bt_play" />
+</androidx.constraintlayout.widget.ConstraintLayout>
