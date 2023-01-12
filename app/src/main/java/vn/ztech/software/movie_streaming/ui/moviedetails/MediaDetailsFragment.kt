@@ -1,7 +1,7 @@
 package vn.ztech.software.movie_streaming.ui.moviedetails
 
+import android.content.Intent
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import com.google.gson.internal.LinkedTreeMap
@@ -18,7 +18,8 @@ import vn.ztech.software.movie_streaming.ui.home.ListMediaAdapter
 import vn.ztech.software.movie_streaming.utils.extensions.loadImage
 import vn.ztech.software.movie_streaming.utils.extensions.toListGroupedBySeason
 import vn.ztech.software.movie_streaming.utils.extensions.toListRecommendations
-import vn.ztech.software.movie_streaming.utils.extensions.toast
+import vn.ztech.software.movie_streaming.ui.player.MediaPlayerActivity
+import vn.ztech.software.movie_streaming.utils.extensions.toListGroupedBySeason
 
 class MediaDetailsFragment<T : Media>() :
     BaseFragment<FragmentMovieDetailsBinding>(FragmentMovieDetailsBinding::inflate) {
@@ -33,6 +34,16 @@ class MediaDetailsFragment<T : Media>() :
                 setSupportActionBar(toolbar)
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 toolbar.title = ""
+            }
+
+            buttonPlay.setOnClickListener {
+                viewModel.mediaDetails.value?.let {
+                    viewModel.mediaDetails.value?.selectedEpisode = it.episodes?.first()?.id?: MediaDetails.NOT_SELECTED
+
+                    val intent = Intent(activity, MediaPlayerActivity::class.java)
+                    intent.putExtras(bundleOf(MediaPlayerActivity.BUNDLE_MEDIA_DETAILS to it.removeRecommendation()))
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -99,7 +110,13 @@ class MediaDetailsFragment<T : Media>() :
     }
 
     private fun onEpisodeClicked(episode: Episode) {
-        context?.toast(episode.toString())
+        viewModel.mediaDetails.value?.let {
+            it.selectedEpisode = episode.id
+
+            val intent = Intent(activity, MediaPlayerActivity::class.java)
+            intent.putExtras(bundleOf(MediaPlayerActivity.BUNDLE_MEDIA_DETAILS to it.removeRecommendation()))
+            startActivity(intent)
+        }
     }
 
     private fun onMediaItemClick(media: Media) {
