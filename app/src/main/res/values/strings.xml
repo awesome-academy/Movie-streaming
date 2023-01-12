@@ -23,4 +23,7 @@
     <string name="format_genres">Genres: %1s</string>
     <string name="format_production">Production: %1s</string>
     <string name="format_country">Country: %1s</string>
+    <string name="slash">/</string>
+    <string name="title_exit_player">Exit movie player?</string>
+    <string name="msg_exit_player">Do you really want to stop watching this?</string>
 </resources>

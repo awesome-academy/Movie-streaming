@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/dp_16"
+    android:background="@drawable/bg_toolbar"
+    android:visibility="visible"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:padding="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="@+id/text_movie_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       app:layout_constraintStart_toEndOf="@id/button_back"
+        android:padding="@dimen/dp_16"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_26"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Avatar 2: The way of water" />
+
+    <TextView
+        android:id="@+id/text_tv_show_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingVertical="@dimen/dp_8"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_movie_title"
+        tools:text="Season 1: Game on" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
