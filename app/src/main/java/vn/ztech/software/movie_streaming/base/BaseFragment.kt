@@ -96,5 +96,4 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: FragmentInfla
             SupportRequestManagerFragment::class.java
         )
     }
-
 }

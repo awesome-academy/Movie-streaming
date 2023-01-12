@@ -1,6 +1,6 @@
 package vn.ztech.software.movie_streaming.data.model
 
-data class MediaDetails(
+data class MediaDetails<T : Media>(
     val casts: List<String>?,
     val country: String?,
     val cover: String?,
@@ -12,10 +12,17 @@ data class MediaDetails(
     val image: String?,
     val production: String?,
     val rating: Double?,
-    val recommendations: List<Media>?,
+    val recommendations: List<T>?,
     val releaseDate: String?,
     val tags: List<String>?,
     val title: String?,
     val type: String?,
     val url: String?
-)
+) {
+
+    fun isTVShow(): Boolean = this.type == TYPE_TV_SHOW
+
+    companion object {
+        const val TYPE_TV_SHOW = "TV Series"
+    }
+}

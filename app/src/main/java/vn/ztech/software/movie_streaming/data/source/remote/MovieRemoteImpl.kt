@@ -1,6 +1,7 @@
 package vn.ztech.software.movie_streaming.data.source.remote
 
 import vn.ztech.software.movie_streaming.data.model.BaseAPIResponse
+import vn.ztech.software.movie_streaming.data.model.Media
 import vn.ztech.software.movie_streaming.data.model.Media.Movie
 import vn.ztech.software.movie_streaming.data.model.Media.Show
 import vn.ztech.software.movie_streaming.data.model.MediaDetails
@@ -25,7 +26,7 @@ class MovieRemoteImpl(private val movieApi: IMovieApi) : IMovieDataSource.Remote
         return movieApi.search(keyword)
     }
 
-    override suspend fun getMovieInfo(id: String): MediaDetails {
+    override suspend fun <T : Media> getMovieInfo(id: String): MediaDetails<T> {
         return movieApi.getMovieInfo(id)
     }
 

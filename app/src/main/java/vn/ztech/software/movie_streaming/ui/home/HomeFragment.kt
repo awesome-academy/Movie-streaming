@@ -91,12 +91,18 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::in
         binding?.layoutTop1Trending?.apply {
             imageCover.loadImage(top1Movie.image)
             layoutIvCoverBlur.imageCoverBlur.loadImage(top1Movie.image)
-
             textName.text = top1Movie.title
         }
     }
 
     private fun onMediaItemClick(media: Media) {
-        openFragment(MediaDetailsFragment.newInstance(media))
+        when (media.getMediaClass()) {
+            Media.MOVIE_CLASS_NAME -> {
+                openFragment(MediaDetailsFragment.newInstance<Movie>(media))
+            }
+            Media.SHOW_CLASS_NAME -> {
+                openFragment(MediaDetailsFragment.newInstance<Media.Show>(media))
+            }
+        }
     }
 }

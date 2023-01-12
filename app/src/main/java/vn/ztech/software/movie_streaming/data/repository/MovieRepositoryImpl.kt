@@ -2,6 +2,7 @@ package vn.ztech.software.movie_streaming.data.repository
 
 import vn.ztech.software.movie_streaming.base.BaseRepository
 import vn.ztech.software.movie_streaming.data.model.BaseAPIResponse
+import vn.ztech.software.movie_streaming.data.model.Media
 import vn.ztech.software.movie_streaming.data.model.Media.Movie
 import vn.ztech.software.movie_streaming.data.model.Media.Show
 import vn.ztech.software.movie_streaming.data.model.MediaDetails
@@ -28,9 +29,10 @@ class MovieRepositoryImpl(private val remote: IMovieDataSource.Remote) : BaseRep
         remote.search(keyword)
     }
 
-    override suspend fun getMovieInfo(id: String): DataResult<MediaDetails> = getResult {
-        remote.getMovieInfo(id)
-    }
+    override suspend fun <T : Media> getMovieInfo(id: String): DataResult<MediaDetails<T>> =
+        getResult {
+            remote.getMovieInfo(id)
+        }
 
     override suspend fun getStreamingResource(
         episodeId: String,

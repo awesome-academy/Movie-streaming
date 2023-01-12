@@ -17,4 +17,10 @@
     <string name="trending">Trending</string>
     <string name="recent_shows">Recent shows</string>
     <string name="recent_movies">Recent movies</string>
+    <string name="episodes">Episodes:</string>
+    <string name="season">Season: %1s</string>
+    <string name="format_casts">Cast: %1s</string>
+    <string name="format_genres">Genres: %1s</string>
+    <string name="format_production">Production: %1s</string>
+    <string name="format_country">Country: %1s</string>
 </resources>

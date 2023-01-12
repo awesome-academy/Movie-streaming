@@ -15,4 +15,7 @@ object Constant {
     }
 
     const val SPLASH_DELAY_TIME = 2000L
+
+    const val FORMAT_SEASON_STRING = "Season: %1s"
+    const val FORMAT_EPISODE_STRING = "\t%1s"
 }

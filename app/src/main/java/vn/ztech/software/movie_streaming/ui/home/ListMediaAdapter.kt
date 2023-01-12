@@ -30,7 +30,7 @@ class ListMediaAdapter(private val listener: (Media) -> Unit) : BaseAdapter<
     ) : BaseViewHolder<Media, LayoutMovieItemBinding>(binding) {
         override fun bind(data: Media) {
             binding.imageCover.apply {
-                loadImage(data.getImg())
+                data.getImg()?.let { loadImage(it) }
                 setOnClickListener { listener(data) }
             }
         }

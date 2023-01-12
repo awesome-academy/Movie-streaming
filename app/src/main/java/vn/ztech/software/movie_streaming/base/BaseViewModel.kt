@@ -9,8 +9,9 @@ import kotlinx.coroutines.launch
 import vn.ztech.software.movie_streaming.utils.DataResult
 
 open class BaseViewModel : ViewModel() {
-    private var _loading = MutableLiveData(false)
+    private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean> get() = _loading
+    val error = MutableLiveData<Exception>()
 
     protected fun <T> launchTaskAsync(
         onRequest: suspend CoroutineScope.() -> DataResult<T>,

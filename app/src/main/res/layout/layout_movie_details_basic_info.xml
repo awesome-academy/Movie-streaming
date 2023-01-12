@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/image_cover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/img_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"/>
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_marginHorizontal="@dimen/dp_8"
+        style="@style/StyleTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_cover"
+        tools:text="Avatar: Way of water" />
+
+    <TextView
+        android:id="@+id/text_year"
+        style="@style/StyleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dp_8"
+        app:layout_constraintEnd_toStartOf="@id/text_duration"
+        android:paddingHorizontal="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="@id/text_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_title"
+        tools:text="2022" />
+
+    <TextView
+        android:id="@+id/text_duration"
+        style="@style/StyleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:paddingVertical="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="@+id/text_year"
+        app:layout_constraintStart_toEndOf="@id/text_year"
+        app:layout_constraintTop_toBottomOf="@+id/text_title"
+        app:layout_constraintEnd_toStartOf="@id/text_rating"
+        tools:text="180 minutes" />
+
+    <TextView
+        android:id="@+id/text_rating"
+        style="@style/StyleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_star"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:paddingVertical="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/text_duration"
+        app:layout_constraintStart_toEndOf="@id/text_duration"
+        app:layout_constraintTop_toBottomOf="@+id/text_title"
+        tools:text="8.4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

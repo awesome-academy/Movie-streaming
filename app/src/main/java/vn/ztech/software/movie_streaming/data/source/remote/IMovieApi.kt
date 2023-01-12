@@ -20,7 +20,7 @@ interface IMovieApi {
     suspend fun search(@Path("keyword") keyword: String): BaseAPIResponse
 
     @GET("info")
-    suspend fun getMovieInfo(@Query("id") id: String): MediaDetails
+    suspend fun <T : Media> getMovieInfo(@Query("id") id: String): MediaDetails<T>
 
     @GET("watch")
     suspend fun getStreamingUrl(

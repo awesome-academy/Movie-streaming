@@ -23,4 +23,14 @@
         <item name="android:background">@color/white</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="StyleTextTitle">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/sp_26</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StyleTextNormal">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
 </resources>
