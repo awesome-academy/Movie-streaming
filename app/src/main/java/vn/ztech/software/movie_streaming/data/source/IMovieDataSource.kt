@@ -27,5 +27,6 @@ interface IMovieDataSource {
 
         suspend fun getStreamingResource(episodeId: String, mediaId: String): StreamingResource
 
+        suspend fun search(keyword: String, page: Int): BaseAPIResponse
     }
 }

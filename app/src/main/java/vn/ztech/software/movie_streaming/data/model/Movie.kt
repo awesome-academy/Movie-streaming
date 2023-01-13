@@ -90,8 +90,8 @@ abstract class Media {
     abstract fun mGetType(): String?
 
     fun getMediaClass(): String? {
-        return if (this is Media.Movie) MOVIE_CLASS_NAME
-        else SHOW_CLASS_NAME
+        return if (this is Media.Movie) OBJECT_TYPE_MOVIE
+        else OBJECT_TYPE_TV_SHOW
     }
 
     companion object {
@@ -106,9 +106,6 @@ abstract class Media {
 
         const val OBJECT_TYPE_MOVIE = "Movie"
         const val OBJECT_TYPE_TV_SHOW = "TV Series"
-
-        const val MOVIE_CLASS_NAME = "MOVIE_CLASS"
-        const val SHOW_CLASS_NAME = "SHOW_CLASS"
     }
 }
 

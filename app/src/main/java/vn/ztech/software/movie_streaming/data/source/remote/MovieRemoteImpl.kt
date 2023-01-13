@@ -36,4 +36,8 @@ class MovieRemoteImpl(private val movieApi: IMovieApi) : IMovieDataSource.Remote
     ): StreamingResource {
         return movieApi.getStreamingUrl(episodeId, mediaId)
     }
+
+    override suspend fun search(keyword: String, page: Int): BaseAPIResponse {
+        return movieApi.search(keyword, page)
+    }
 }

@@ -27,4 +27,7 @@ interface IMovieApi {
         @Query("episodeId") episodeId: String,
         @Query("mediaId") mediaId: String
     ): StreamingResource
+
+    @GET("{keyword}")
+    suspend fun search(@Path("keyword") keyword: String, @Query("page") page: Int): BaseAPIResponse
 }
