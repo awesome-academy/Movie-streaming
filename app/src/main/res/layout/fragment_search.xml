@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorOnPrimary"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include
+        android:id="@+id/layout_tool_bar"
+        layout="@layout/layout_search_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Search" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list_movies"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:nestedScrollingEnabled="false"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:paddingVertical="@dimen/dp_4"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_tool_bar"
+        app:spanCount="3"
+        tools:itemCount="10"
+        tools:listitem="@layout/layout_movie_item_max_width"/>
+
+    <include
+        android:id="@+id/layout_loading"
+        layout="@layout/layout_loading"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recycler_list_movies" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

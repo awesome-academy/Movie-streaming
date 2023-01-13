@@ -42,7 +42,7 @@ class ListMediaAdapter(private val listener: (Media) -> Unit) : BaseAdapter<
         }
 
         override fun areContentsTheSame(oldItem: Media, newItem: Media): Boolean {
-            return oldItem == newItem
+            return oldItem.mGetId() == newItem.mGetId()
         }
     }
 }

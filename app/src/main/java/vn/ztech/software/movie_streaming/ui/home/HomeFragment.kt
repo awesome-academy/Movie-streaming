@@ -97,10 +97,10 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::in
 
     private fun onMediaItemClick(media: Media) {
         when (media.getMediaClass()) {
-            Media.MOVIE_CLASS_NAME -> {
+            Media.OBJECT_TYPE_MOVIE -> {
                 openFragment(MediaDetailsFragment.newInstance<Movie>(media))
             }
-            Media.SHOW_CLASS_NAME -> {
+            Media.OBJECT_TYPE_TV_SHOW -> {
                 openFragment(MediaDetailsFragment.newInstance<Media.Show>(media))
             }
         }

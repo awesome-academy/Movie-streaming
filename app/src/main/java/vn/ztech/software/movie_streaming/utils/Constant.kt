@@ -18,4 +18,6 @@ object Constant {
 
     const val FORMAT_SEASON_STRING = "Season: %1s"
     const val FORMAT_EPISODE_STRING = "\t%1s"
+
+    const val FIRST_PAGE = 1
 }

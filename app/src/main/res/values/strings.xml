@@ -26,4 +26,5 @@
     <string name="slash">/</string>
     <string name="title_exit_player">Exit movie player?</string>
     <string name="msg_exit_player">Do you really want to stop watching this?</string>
+    <string name="search_bar_placeholder_text">search movies…</string>
 </resources>

@@ -25,4 +25,5 @@ interface IMovieRepository {
         mediaId: String
     ): DataResult<StreamingResource>
 
+    suspend fun search(keyword: String, page: Int): DataResult<BaseAPIResponse>
 }

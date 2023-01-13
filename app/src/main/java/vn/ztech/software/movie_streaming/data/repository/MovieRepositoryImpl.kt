@@ -40,4 +40,8 @@ class MovieRepositoryImpl(private val remote: IMovieDataSource.Remote) : BaseRep
     ): DataResult<StreamingResource> = getResult {
         remote.getStreamingResource(episodeId, mediaId)
     }
+
+    override suspend fun search(keyword: String, page: Int): DataResult<BaseAPIResponse> = getResult {
+        remote.search(keyword, page)
+    }
 }

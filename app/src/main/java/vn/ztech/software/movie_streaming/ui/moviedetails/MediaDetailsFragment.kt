@@ -121,10 +121,10 @@ class MediaDetailsFragment<T : Media>() :
 
     private fun onMediaItemClick(media: Media) {
         when (media.getMediaClass()) {
-            Media.MOVIE_CLASS_NAME -> {
+            Media.OBJECT_TYPE_MOVIE -> {
                 openFragment(newInstance<Movie>(media))
             }
-            Media.SHOW_CLASS_NAME -> {
+            Media.OBJECT_TYPE_TV_SHOW -> {
                 openFragment(newInstance<Media.Show>(media))
             }
         }
