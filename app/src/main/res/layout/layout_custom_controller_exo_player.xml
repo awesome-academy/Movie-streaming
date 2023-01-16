@@ -3,10 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/black_transparent">
 
+    <TextView
+        android:id="@+id/text_zooming_percentage"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_24"
+        tools:text="225%"
+        style="@style/StyleTextTitle"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_above="@+id/linear_controllers"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/image_brightness"
+        android:layout_alignTop="@id/seek_bar_brightness"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"/>
+    <SeekBar
+        android:id="@+id/seek_bar_brightness"
+        android:thumbTint="@color/white"
+        android:thumb="@drawable/ic_sun"
+        android:layout_centerVertical="true"
+        tools:progress="50"
+        android:rotation="270"
+        android:progressTint="@color/white"
+        android:layout_toStartOf="@id/linear_controllers"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
+        android:id="@+id/linear_controllers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

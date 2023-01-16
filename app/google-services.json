@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "923281670184",
+    "project_id": "movie-streaming-e60ae",
+    "storage_bucket": "movie-streaming-e60ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923281670184:android:abad71cdfe9f217a04351d",
+        "android_client_info": {
+          "package_name": "vn.ztech.software.movie_streaming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923281670184-tcfaabub4ismrej9lbp09qrlbcpru2bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.ztech.software.movie_streaming",
+            "certificate_hash": "72525966ad7db82613a81a938fec1189d1c73d1f"
+          }
+        },
+        {
+          "client_id": "923281670184-mu0kauomjjumfgr2e1ka2q006n9ar8mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6iTyO1JsAXEMlLyQDjm5zr-Gzb2Uk4VI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923281670184-mu0kauomjjumfgr2e1ka2q006n9ar8mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

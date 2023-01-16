@@ -2,6 +2,7 @@
 <resources>
 
     // dp
+    <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_160">160dp</dimen>
     <dimen name="dp_140">140dp</dimen>
@@ -20,13 +21,15 @@
     <dimen name="dp_6">6dp</dimen>
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_400">400dp</dimen>
 
     //sp
-    // sp
+    <dimen name="sp_36">36sp</dimen>
     <dimen name="sp_26">26sp</dimen>
     <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_10">10sp</dimen>
     <dimen name="sp_6">6sp</dimen>
     <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_14">14sp</dimen>

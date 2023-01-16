@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorOnPrimary">
+
             <include
                 android:id="@+id/layout_basic_info"
                 android:layout_width="match_parent"
@@ -28,6 +29,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 layout="@layout/layout_movie_details_basic_info"/>
+
             <include
                 android:id="@+id/layout_loading2"
                 layout="@layout/layout_loading"
@@ -37,10 +39,44 @@
                 app:layout_constraintBottom_toBottomOf="@id/layout_basic_info"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"/>
+
+            <TextView
+                android:id="@+id/button_add_to_my_list"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_basic_info"
+                android:layout_width="wrap_content"
+                android:layout_marginVertical="@dimen/dp_4"
+                android:paddingVertical="@dimen/dp_8"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:text="@string/add_to_my_list"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                app:drawableStartCompat="@drawable/ic_add"
+                android:gravity="center"
+                android:textColor="?attr/colorPrimary"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/button_remove_from_my_list"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_basic_info"
+                android:layout_width="wrap_content"
+                android:layout_marginVertical="@dimen/dp_4"
+                android:paddingVertical="@dimen/dp_8"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:text="@string/add_to_my_list"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                app:drawableStartCompat="@drawable/ic_done"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:textColor="?attr/colorPrimary"
+                android:layout_height="wrap_content"/>
+
             <TextView
                 android:id="@+id/button_play"
                 android:background="@drawable/bg_bt_play"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_add_to_my_list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_basic_info"
                 android:layout_width="0dp"
@@ -51,6 +87,7 @@
                 android:gravity="center"
                 android:textColor="?attr/colorPrimary"
                 android:layout_height="wrap_content"/>
+
             <include
                 android:id="@+id/layout_advanced_info"
                 android:layout_width="match_parent"

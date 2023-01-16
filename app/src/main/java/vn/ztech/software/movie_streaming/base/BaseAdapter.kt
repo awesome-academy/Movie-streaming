@@ -19,7 +19,7 @@ abstract class BaseAdapter<T, VB : ViewBinding, VH : BaseViewHolder<T, VB>>(diff
         holder.bind(getItem(position))
     }
 
-    fun setOnLoadMoreListener(recyclerView: RecyclerView?, handle:() -> Unit) {
+    fun setOnLoadMoreListener(recyclerView: RecyclerView?, handle: () -> Unit) {
         recyclerView?.apply {
             addOnScrollListener(
                 object : RecyclerView.OnScrollListener() {

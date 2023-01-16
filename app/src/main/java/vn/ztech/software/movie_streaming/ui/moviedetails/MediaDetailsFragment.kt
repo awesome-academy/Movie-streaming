@@ -12,14 +12,18 @@ import vn.ztech.software.movie_streaming.data.model.Episode
 import vn.ztech.software.movie_streaming.data.model.Media
 import vn.ztech.software.movie_streaming.data.model.Media.Movie
 import vn.ztech.software.movie_streaming.data.model.MediaDetails
+import vn.ztech.software.movie_streaming.data.model.MediaDetailsWatchingHistory
 import vn.ztech.software.movie_streaming.databinding.FragmentMovieDetailsBinding
 import vn.ztech.software.movie_streaming.ui.MainActivity
+import vn.ztech.software.movie_streaming.ui.home.HomeViewModel
 import vn.ztech.software.movie_streaming.ui.home.ListMediaAdapter
+import vn.ztech.software.movie_streaming.ui.home.MyListViewModel
+import vn.ztech.software.movie_streaming.ui.player.MediaPlayerActivity
+import vn.ztech.software.movie_streaming.ui.player.WatchingHistoryViewModel
 import vn.ztech.software.movie_streaming.utils.extensions.loadImage
 import vn.ztech.software.movie_streaming.utils.extensions.toListGroupedBySeason
 import vn.ztech.software.movie_streaming.utils.extensions.toListRecommendations
-import vn.ztech.software.movie_streaming.ui.player.MediaPlayerActivity
-import vn.ztech.software.movie_streaming.utils.extensions.toListGroupedBySeason
+import vn.ztech.software.movie_streaming.utils.extensions.toMediaMyList
 
 class MediaDetailsFragment<T : Media>() :
     BaseFragment<FragmentMovieDetailsBinding>(FragmentMovieDetailsBinding::inflate) {
@@ -27,6 +31,8 @@ class MediaDetailsFragment<T : Media>() :
     private val listEpisodesAdapter by lazy { ListEpisodesAdapter { onEpisodeClicked(it) } }
     private val listRecommendationsAdapter by lazy { ListMediaAdapter { onMediaItemClick(it) } }
     override val viewModel: MovieDetailsViewModel<T> by viewModel()
+    private val myListViewModel: MyListViewModel by viewModel()
+    private val watchingHistoryViewModel: WatchingHistoryViewModel by viewModel()
 
     override fun initView() {
         binding?.apply {
@@ -38,13 +44,29 @@ class MediaDetailsFragment<T : Media>() :
 
             buttonPlay.setOnClickListener {
                 viewModel.mediaDetails.value?.let {
-                    viewModel.mediaDetails.value?.selectedEpisode = it.episodes?.first()?.id?: MediaDetails.NOT_SELECTED
+                    val latestEpisodeId =
+                        watchingHistoryViewModel.mediaDetailsWatchingHistory.value?.latestWatchingEpisodeId
+                            ?: it.episodes?.first()?.id
+
+                    viewModel.mediaDetails.value?.selectedEpisode = latestEpisodeId
 
                     val intent = Intent(activity, MediaPlayerActivity::class.java)
                     intent.putExtras(bundleOf(MediaPlayerActivity.BUNDLE_MEDIA_DETAILS to it.removeRecommendation()))
+                    intent.putExtras(bundleOf(MediaPlayerActivity.BUNDLE_MEDIA_DETAILS_WATCHING_HISTORY to watchingHistoryViewModel.mediaDetailsWatchingHistory.value))
                     startActivity(intent)
                 }
             }
+
+            buttonAddToMyList.setOnClickListener {
+                (viewModel.mediaDetails.value as? MediaDetails<Media>)?.toMediaMyList()
+                    ?.let { myListViewModel.addToMyList(it) }
+            }
+
+            buttonRemoveFromMyList.setOnClickListener {
+                (viewModel.mediaDetails.value as? MediaDetails<Media>)?.toMediaMyList()
+                    ?.let { myListViewModel.removeFromMyList(it) }
+            }
+
         }
     }
 
@@ -64,6 +86,10 @@ class MediaDetailsFragment<T : Media>() :
         }
 
         viewModel.mediaDetails.observe(this) { mediaDetails ->
+            mediaDetails?.let {
+                myListViewModel.isThisMediaAlreadyInMyList(it.id)
+                watchingHistoryViewModel.getMediaWatchingHistory(it.id)
+            }
             bindUI(mediaDetails)
         }
 
@@ -71,6 +97,67 @@ class MediaDetailsFragment<T : Media>() :
             binding?.layoutLoading?.constrainLoading?.isVisible = isLoading
             binding?.layoutLoading2?.constrainLoading?.isVisible = isLoading
         }
+
+        myListViewModel.addToMyListState.observe(this) {
+            when (it) {
+                HomeViewModel.Companion.AddToMyListStates.ADDED -> {
+                    binding?.buttonAddToMyList?.visibility = View.INVISIBLE
+                    binding?.buttonRemoveFromMyList?.isVisible = true
+                }
+                HomeViewModel.Companion.AddToMyListStates.REMOVED -> {
+                    binding?.buttonAddToMyList?.visibility = View.VISIBLE
+                    binding?.buttonRemoveFromMyList?.visibility = View.INVISIBLE
+                }
+                else -> {}
+            }
+        }
+
+        myListViewModel.isMediaInMyList.observe(this) {
+            when (it) {
+                true -> {
+                    binding?.buttonAddToMyList?.visibility = View.INVISIBLE
+                    binding?.buttonRemoveFromMyList?.isVisible = true
+                }
+                else -> {
+                    binding?.buttonAddToMyList?.visibility = View.VISIBLE
+                    binding?.buttonRemoveFromMyList?.visibility = View.INVISIBLE
+                }
+            }
+        }
+
+        watchingHistoryViewModel.mediaDetailsWatchingHistory.observe(this) {
+            it?.let {
+                when (viewModel.media.value?.getMediaClass()) {
+                    Media.OBJECT_TYPE_MOVIE -> {
+                        showWatchingHistoryMovie(it)
+                    }
+                    Media.OBJECT_TYPE_TV_SHOW -> {
+                        updateInfoArea(it)
+                        showWatchingHistoryShow(it)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateInfoArea(mediaDetailsWatchingHistory: MediaDetailsWatchingHistory) {
+        binding?.layoutBasicInfo?.tvTvShowInfo?.text =
+            mediaDetailsWatchingHistory.getTVShowEpisodeInfoFull()
+        mediaDetailsWatchingHistory.getTVShowEpisodeInfo().let {
+            if (it.isNotEmpty()) binding?.buttonPlay?.text =
+                resources.getString(R.string.format_button_play, it)
+        }
+    }
+
+    private fun showWatchingHistoryMovie(history: MediaDetailsWatchingHistory) {
+        history.getCurrentWatchingPercentage().let {
+            binding?.layoutBasicInfo?.progressBarWatchingPosition?.progress = it
+        }
+    }
+
+    private fun showWatchingHistoryShow(history: MediaDetailsWatchingHistory) {
+        viewModel.updateEpisodes(history)
+        viewModel.mediaDetails.value?.episodes?.let { listEpisodesAdapter.setData(it.toListGroupedBySeason()) }
     }
 
     private fun bindUI(mediaDetails: MediaDetails<T>) {
@@ -90,7 +177,7 @@ class MediaDetailsFragment<T : Media>() :
                 textGenres.text =
                     resources.getString(R.string.format_genres, mediaDetails.genres.toString())
                 textProduction.text =
-                    resources.getString(R.string.format_production,  mediaDetails.production)
+                    resources.getString(R.string.format_production, mediaDetails.production)
                 textCountry.text =
                     resources.getString(R.string.format_country, mediaDetails.country)
             }
@@ -115,6 +202,7 @@ class MediaDetailsFragment<T : Media>() :
 
             val intent = Intent(activity, MediaPlayerActivity::class.java)
             intent.putExtras(bundleOf(MediaPlayerActivity.BUNDLE_MEDIA_DETAILS to it.removeRecommendation()))
+            intent.putExtras(bundleOf(MediaPlayerActivity.BUNDLE_MEDIA_DETAILS_WATCHING_HISTORY to watchingHistoryViewModel.mediaDetailsWatchingHistory.value))
             startActivity(intent)
         }
     }
@@ -128,6 +216,15 @@ class MediaDetailsFragment<T : Media>() :
                 openFragment(newInstance<Media.Show>(media))
             }
         }
+    }
+
+    override fun refreshData() {
+        viewModel.mediaDetails.value?.id?.let { watchingHistoryViewModel.getMediaWatchingHistory(it) }
+    }
+
+    override fun onResume() {
+        refreshData()
+        super.onResume()
     }
 
     companion object {

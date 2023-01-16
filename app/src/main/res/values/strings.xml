@@ -7,7 +7,7 @@
     <string name="dialog_button_ok">Ok</string>
     <string name="dialog_title_quit_app">Quit this app?</string>
     <string name="dialog_message_quit_app">By confirming, you will exit the app!</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_msg">Error happened: %1s</string>
     <string name="error_title">Error</string>
@@ -27,4 +27,18 @@
     <string name="title_exit_player">Exit movie player?</string>
     <string name="msg_exit_player">Do you really want to stop watching this?</string>
     <string name="search_bar_placeholder_text">search movies…</string>
+    <string name="sign_out">Sign out</string>
+    <string name="menu_logout">Logout</string>
+    <string name="title_logout">Log out</string>
+    <string name="msg_logout">Do you want to logout of this account?</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="phone">Phone number:</string>
+    <string name="continue_watching">Continue watching</string>
+    <string name="dialog_title_stop_watching_movie">Stop watching movie</string>
+    <string name="dialog_message_stop_watching_movie">Do you really want to stop watching this movie?</string>
+    <string name="format_button_play">Play: %1s</string>
+    <string name="login">Login</string>
+    <string name="welcome">Welcome! </string>
+    <string name="let">Let\'s rock in the cinema world!</string>
 </resources>

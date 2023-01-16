@@ -3,6 +3,7 @@ package vn.ztech.software.movie_streaming.utils.extensions
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import vn.ztech.software.movie_streaming.R
+import kotlin.reflect.KClass
 
 fun Fragment.addFragment(fragment: Fragment) {
     activity?.supportFragmentManager?.let { fragmentManager ->
@@ -37,3 +38,8 @@ fun Fragment.popFragment(fragment: Fragment) {
             }
     }
 }
+
+inline fun <T : Any> List<Fragment>.findByType(clazz: KClass<T>): Fragment? {
+    return this.firstOrNull { it::class == clazz }
+}
+

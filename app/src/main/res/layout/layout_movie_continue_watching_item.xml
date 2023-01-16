@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_4"
+    android:background="@drawable/bg_rounded"
+    app:cardCornerRadius="@dimen/dp_8">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_160"
+            android:id="@+id/iv_cover"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/img_movie" />
+
+        <ImageView
+            android:id="@+id/button_play"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_play_circle_outline_24"
+            app:layout_constraintBottom_toBottomOf="@id/iv_cover"
+            app:layout_constraintEnd_toEndOf="@+id/iv_cover"
+            app:layout_constraintStart_toStartOf="@id/iv_cover"
+            app:layout_constraintTop_toTopOf="@id/iv_cover" />
+        <ProgressBar
+            app:layout_constraintTop_toBottomOf="@id/iv_cover"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:id="@+id/progress_bar_watching_position"
+            android:orientation="horizontal"
+            android:layout_width="@dimen/dp_0"
+            tools:progress="58"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="@dimen/dp_8"/>
+        <TextView
+            android:id="@+id/text_tv_show_info"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_10"
+            android:paddingStart="@dimen/dp_3"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar_watching_position"
+            app:layout_constraintEnd_toStartOf="@id/button_info"
+            android:layout_marginEnd="@dimen/dp_8"
+            tools:text="Season 1 | abcx a d a a a a"
+            />
+        <ImageView
+            android:id="@+id/button_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar_watching_position"
+            app:layout_constraintEnd_toEndOf="@id/iv_cover"
+            android:layout_marginEnd="@dimen/dp_8"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

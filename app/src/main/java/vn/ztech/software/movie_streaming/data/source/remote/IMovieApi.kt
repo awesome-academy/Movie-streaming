@@ -25,7 +25,8 @@ interface IMovieApi {
     @GET("watch")
     suspend fun getStreamingUrl(
         @Query("episodeId") episodeId: String,
-        @Query("mediaId") mediaId: String
+        @Query("mediaId") mediaId: String,
+        @Query("server") server: String
     ): StreamingResource
 
     @GET("{keyword}")

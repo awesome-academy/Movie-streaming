@@ -1,6 +1,5 @@
 package vn.ztech.software.movie_streaming.ui.search
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import vn.ztech.software.movie_streaming.base.BaseViewModel
@@ -30,7 +29,8 @@ class SearchViewModel(private val movieRepository: IMovieRepository) : BaseViewM
             },
             onSuccess = {
                 response = it
-                if (page != Constant.FIRST_PAGE) _media.value = _media.value?.plus(it.results?.toTypedArray()?: emptyArray())
+                if (page != Constant.FIRST_PAGE) _media.value =
+                    _media.value?.plus(it.results?.toTypedArray() ?: emptyArray())
                 else {
                     _media.value = it.results
                 }
@@ -45,8 +45,8 @@ class SearchViewModel(private val movieRepository: IMovieRepository) : BaseViewM
         )
     }
 
-    fun loadMore(){
-        if (response.hasNextPage == true && currentKeyword.isNotEmpty()){
+    fun loadMore() {
+        if (response.hasNextPage == true && currentKeyword.isNotEmpty()) {
             response.currentPage?.let {
                 search(currentKeyword, it + 1)
             }
