@@ -34,6 +34,8 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: FragmentInfla
 
     abstract fun bindData()
 
+    open fun refreshData() {}
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

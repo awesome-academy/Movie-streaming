@@ -23,15 +23,20 @@ data class StreamingResource(
     }
 
     fun filterOutAuto(): List<Subtitle> {
-        val subs = subtitles?.filter { it.lang?.contains(SUBTITLE_DEFAULT_MAYBE) == false}
-        return subs?: emptyList()
+        val subs = subtitles?.filter { it.lang?.contains(SUBTITLE_DEFAULT_MAYBE) == false }
+        return subs ?: emptyList()
+    }
+
+    companion object {
+        val listServers = listOf<String>("vidcloud", "mixdrop", "upcloud")
     }
 }
 
 data class StreamingStates(
     var position: Long = DEFAULT_STREAMING_POSITION,
     var quality: String = DEFAULT_STREAMING_QUALITY,
-    var lang: String = DEFAULT_STREAMING_LANG
+    var lang: String = DEFAULT_STREAMING_LANG,
+    var brightnessProgress: Int = 0
 ) {
     fun clearStates() {
         this.position = DEFAULT_STREAMING_POSITION

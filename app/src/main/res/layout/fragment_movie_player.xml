@@ -20,6 +20,7 @@
         android:layout_height="match_parent"
         android:background="?attr/colorOnPrimary"
         app:controller_layout_id="@layout/layout_custom_controller_exo_player"
+        app:player_layout_id="@layout/layout_exo_player_view_custom"
         app:hide_on_touch="true"
         app:resize_mode="fit"
         app:show_timeout="5000"

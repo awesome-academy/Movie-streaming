@@ -50,6 +50,7 @@ class ListEpisodesAdapter(private val listener: (Episode) -> Unit) :
     ) : BaseViewHolder<Episode, LayoutEpisodeItemBinding>(binding) {
         override fun bind(data: Episode) {
             binding.tvTitle.text = String.format(Constant.FORMAT_EPISODE_STRING, data.title)
+            binding.progressBarWatchingPosition.progress = data.getWatchingPercentage()
             binding.root.setOnClickListener { listener(data) }
         }
     }

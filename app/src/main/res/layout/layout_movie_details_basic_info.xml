@@ -16,16 +16,44 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_200"/>
 
+    <ProgressBar
+        app:layout_constraintTop_toBottomOf="@id/image_cover"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:id="@+id/progress_bar_watching_position"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        tools:progress="58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="@dimen/dp_8"/>
+
     <TextView
         android:id="@+id/text_title"
         android:layout_marginHorizontal="@dimen/dp_8"
         style="@style/StyleTextTitle"
+        android:maxWidth="@dimen/dp_300"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingVertical="@dimen/dp_8"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@+id/tv_tv_show_info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_cover"
-        tools:text="Avatar: Way of water" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_watching_position"
+        tools:text="Avatar: Way of water x x x x x x x x x x" />
+
+    <TextView
+        android:id="@+id/tv_tv_show_info"
+        style="@style/StyleTextTitleSmall"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_8"
+        android:paddingVertical="@dimen/dp_8"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="@id/text_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/text_title"
+        app:layout_constraintTop_toTopOf="@id/text_title"
+        tools:text="Season 1: Episode 1" />
 
     <TextView
         android:id="@+id/text_year"

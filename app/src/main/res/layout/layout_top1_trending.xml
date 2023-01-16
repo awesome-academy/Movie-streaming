@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <include
-        android:id="@+id/layout_iv_cover_blur"
+        android:id="@+id/layout_image_cover_blur"
         layout="@layout/image_view_blur"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,40 +18,56 @@
     <ImageView
         android:id="@+id/image_cover"
         android:layout_width="250dp"
+        tools:src="@drawable/img_movie"
         android:layout_height="400dp"
         android:layout_marginTop="@dimen/dp_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/img_movie" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="@dimen/dp_24"
-        android:textColor="?attr/colorPrimary"
         android:textSize="@dimen/sp_26"
         android:textStyle="bold"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Once upon a time in Hollywood"
+        android:layout_marginHorizontal="@dimen/dp_32"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_cover"
-        tools:text="Once upon a time in Hollywood" />
+        app:layout_constraintTop_toBottomOf="@id/image_cover" />
 
     <TextView
+        android:layout_marginTop="@dimen/dp_24"
         android:id="@+id/button_add_my_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_24"
         android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/button_play"
         android:paddingHorizontal="@dimen/dp_8"
         android:text="@string/add_to_my_list"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="?attr/colorPrimary"
         app:drawableStartCompat="@drawable/ic_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_name" />
+    <TextView
+        android:layout_marginTop="@dimen/dp_24"
+        android:id="@+id/button_remove_my_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@id/button_play"
+        android:paddingHorizontal="@dimen/dp_8"
+        android:text="@string/add_to_my_list"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        android:textColor="?attr/colorPrimary"
+        app:drawableStartCompat="@drawable/ic_done"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_name" />
 
@@ -59,17 +75,17 @@
         android:id="@+id/button_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp_24"
         android:background="@drawable/bg_rounded"
         android:backgroundTint="?attr/colorPrimary"
         android:gravity="center"
         android:paddingHorizontal="@dimen/dp_8"
         android:text="@string/play"
+        app:layout_constraintEnd_toStartOf="@id/button_info"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/dp_24"
         android:textColor="?attr/colorOnPrimary"
         app:drawableStartCompat="@drawable/ic_play"
-        app:layout_constraintEnd_toStartOf="@id/button_info"
         app:layout_constraintStart_toEndOf="@id/button_add_my_list"
         app:layout_constraintTop_toTopOf="@id/button_add_my_list" />
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import vn.ztech.software.movie_streaming.base.BaseViewModel
 import vn.ztech.software.movie_streaming.data.model.Media
 import vn.ztech.software.movie_streaming.data.model.MediaDetails
+import vn.ztech.software.movie_streaming.data.model.MediaDetailsWatchingHistory
 import vn.ztech.software.movie_streaming.data.repository.IMovieRepository
 
 class MovieDetailsViewModel<T : Media>(private val movieRepository: IMovieRepository) :
@@ -24,5 +25,11 @@ class MovieDetailsViewModel<T : Media>(private val movieRepository: IMovieReposi
                 error.value = it
             }
         )
+    }
+
+    fun updateEpisodes(history: MediaDetailsWatchingHistory) {
+        history.episodesHistory?.forEach {
+            mediaDetails.value?.updateEpisodeWatchingHistory(it)
+        }
     }
 }

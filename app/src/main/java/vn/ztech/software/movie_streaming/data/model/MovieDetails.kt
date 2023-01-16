@@ -17,21 +17,16 @@ data class MediaDetails<T : Media>(
     val image: String?,
     val production: String?,
     val rating: Double?,
-    val recommendations:  @RawValue List<T>?,
+    val recommendations: @RawValue List<T>?,
     val releaseDate: String?,
     val tags: List<String>?,
     val title: String?,
     val type: String?,
     val url: String?,
-    var selectedEpisode: String = NOT_SELECTED
-) : Parcelable  {
+    var selectedEpisode: String? = NOT_SELECTED
+) : Parcelable {
 
     fun isTVShow(): Boolean = this.type == TYPE_TV_SHOW
-
-    companion object {
-        const val TYPE_TV_SHOW = "TV Series"
-        const val NOT_SELECTED = ""
-    }
 
     fun removeRecommendation(): MediaDetails<T> {
         return MediaDetails(
@@ -57,10 +52,47 @@ data class MediaDetails<T : Media>(
     }
 
     fun findEpisode(title: String): Episode? {
-        return episodes?.firstOrNull { title.contains(it.title) }
+        return episodes?.firstOrNull { title.contains(it.title) ?: false }
+    }
+
+    private fun findEpisodeById(id: String?): Episode? {
+        return episodes?.firstOrNull { it.id == id }
     }
 
     fun getSelectedEpisode(): Episode? {
-        return episodes?.firstOrNull { it.id == selectedEpisode }
+        return episodes?.firstOrNull { it.id == selectedEpisode } ?: return episodes?.firstOrNull()
+    }
+
+    fun updateEpisodeWatchingHistory(episodeWatchingHistory: EpisodeWatchingHistory) {
+        findEpisodeById(episodeWatchingHistory.id)?.let {
+            it.duration = episodeWatchingHistory.duration ?: 0
+            it.position = episodeWatchingHistory.position ?: 0
+        }
+    }
+
+    fun toEpisodeWatchingHistory(currentPosition: Long, duration: Long): EpisodeWatchingHistory {
+        val selectedEpisode = this.getSelectedEpisode()
+        return EpisodeWatchingHistory(
+            selectedEpisode?.id,
+            selectedEpisode?.title,
+            selectedEpisode?.season,
+            currentPosition,
+            duration
+        )
+    }
+
+    fun toMediaDetailsWatchingHistory(oldMediaDetailsWatchingHistory: MediaDetailsWatchingHistory?): MediaDetailsWatchingHistory {
+        return MediaDetailsWatchingHistory(
+            this.id,
+            this.image,
+            this.type,
+            oldMediaDetailsWatchingHistory?.episodesHistory,
+            this.getSelectedEpisode()?.id
+        )
+    }
+
+    companion object {
+        const val TYPE_TV_SHOW = "TV Series"
+        const val NOT_SELECTED = ""
     }
 }

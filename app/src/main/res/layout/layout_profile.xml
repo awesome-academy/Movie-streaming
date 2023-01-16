@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_18"
+    android:background="?attr/colorOnPrimary">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_user_photo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/StyleCircularImageView"
+        tools:src="@drawable/img_avatar"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:scaleType="centerCrop"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_120"/>
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_marginTop="@dimen/dp_16"
+        style="@style/StyleTextTitleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_user_photo" />
+
+    <TextView
+        android:id="@+id/text_name_content"
+        style="@style/StyleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_4"
+        app:layout_constraintBottom_toBottomOf="@id/text_name"
+        app:layout_constraintStart_toEndOf="@id/text_name"
+        app:layout_constraintTop_toTopOf="@id/text_name"
+        tools:text="Shaina Tauro" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_name"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="text_name, text_name_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/text_email"
+        style="@style/StyleTextTitleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_name" />
+
+    <TextView
+        android:id="@+id/text_email_content"
+        style="@style/StyleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_4"
+        app:layout_constraintBottom_toBottomOf="@id/text_email"
+        app:layout_constraintStart_toEndOf="@id/text_email"
+        app:layout_constraintTop_toTopOf="@id/text_email"
+        tools:text="shainatauro@gmail.com" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_email"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="text_email, text_email_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/text_phone"
+        style="@style/StyleTextTitleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_email" />
+
+    <TextView
+        android:id="@+id/text_phone_content"
+        style="@style/StyleTextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_4"
+        app:layout_constraintBottom_toBottomOf="@id/text_phone"
+        app:layout_constraintStart_toEndOf="@id/text_phone"
+        app:layout_constraintTop_toTopOf="@id/text_phone"
+        tools:text="+91336130008" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_phone"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="text_phone, text_phone_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

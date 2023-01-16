@@ -7,12 +7,12 @@ import kotlinx.android.parcel.Parcelize
 abstract class Media {
     @Parcelize
     data class Movie(
-        val id: String?,
-        val image: String?,
-        val seasons: Int?,
-        val title: String?,
-        val type: String?,
-        val url: String?
+        val id: String? = null,
+        val image: String? = null,
+        val seasons: Int? = null,
+        val title: String? = null,
+        val type: String? = null,
+        val url: String? = null
     ) : Media(), Parcelable {
         override fun getImg(): String? {
             return image
@@ -46,13 +46,13 @@ abstract class Media {
 
     @Parcelize
     data class Show(
-        val id: String?,
-        val image: String?,
-        val latestEpisode: String?,
-        val season: String?,
-        val title: String?,
-        val type: String?,
-        val url: String?
+        val id: String? = null,
+        val image: String? = null,
+        val latestEpisode: String? = null,
+        val season: String? = null,
+        val title: String? = null,
+        val type: String? = null,
+        val url: String? = null
     ) : Media(), Parcelable {
         override fun getImg(): String? {
             return image
@@ -90,9 +90,12 @@ abstract class Media {
     abstract fun mGetType(): String?
 
     fun getMediaClass(): String? {
-        return if (this is Media.Movie) OBJECT_TYPE_MOVIE
+        return if (this.mGetType() == OBJECT_TYPE_MOVIE) OBJECT_TYPE_MOVIE
         else OBJECT_TYPE_TV_SHOW
     }
+
+    fun toMovie() = Movie(this.mGetId(), this.getImg(), null, null, this.mGetType(), null)
+    fun toShow() = Show(this.mGetId(), this.getImg(), null, null, null, this.mGetType(), null)
 
     companion object {
         const val FIELD_ID = "id"

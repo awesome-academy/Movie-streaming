@@ -20,4 +20,5 @@ object Constant {
     const val FORMAT_EPISODE_STRING = "\t%1s"
 
     const val FIRST_PAGE = 1
+    const val EMPTY_STRING = ""
 }

@@ -75,4 +75,10 @@ class HomeViewModel(private val movieRepository: IMovieRepository) : BaseViewMod
             }
         )
     }
+
+    companion object {
+        enum class AddToMyListStates {
+            NONE, ADDING, ADDED, FAILED, REMOVED
+        }
+    }
 }
